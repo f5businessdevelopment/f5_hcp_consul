@@ -1,0 +1,7 @@
+vpc_id = "vpc-xxxxxx0"
+vpc_cidr_block = "10.0.0.0/16"
+subnet_id = "subnet-xxxx"
+cluster_id = "xxx-consul-cluster"
+hcp_consul_security_group_id = "sg-xxxxxxxx"
+service-principal-key-client-id = "xxxxxxxxxxxxxxxxxxxxxxx"
+service-principal-key-client-secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
