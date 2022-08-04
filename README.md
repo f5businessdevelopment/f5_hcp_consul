@@ -2,6 +2,7 @@
 This projects helps to automate the BIG-IP configuration for automatically updating the BIG-Pool members whenever any new servers are deployed. It can also deploy new virtual server and pool configuration on the BIG-IP with AWAF cpolicy configuration on the VIP.
 
 - Assumptions:
+
 Enable ASM resource provision on BIG-IP
 
 Install the RPM packages for AS3 and Fast templates
