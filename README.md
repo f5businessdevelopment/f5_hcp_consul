@@ -3,8 +3,11 @@ This projects helps to automate the BIG-IP configuration for automatically updat
 
 - Assumptions:
 Enable ASM resource provision on BIG-IP
+
 Install the RPM packages for AS3 and Fast templates
+
 Tested with AS3 RPM 1.36 and Fast template 1.17.0
+
 You have VPC Peering already done between the HashiCorp Virtual Network and your AWS VPC where the F5 bigip and backend applications are running. 
 
 It uses Consul terraform Sync ( CTS enterprise 0.60 version), Consul HCP and Terraform Cloud. CTS  is used for Service Discovery and works with Consul HCP and Terraform Cloud. 
