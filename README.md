@@ -56,7 +56,8 @@ you can ssh to the ```jumpbox``` login to the cts directory and fine tune the hc
 example hcl file under cts directory
 
 
-``` cat << EOF > f5nia.hcl
+``` 
+cat << EOF > f5nia.hcl
 
 ## Global Config
 log_level   = "DEBUG"
