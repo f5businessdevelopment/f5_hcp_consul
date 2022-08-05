@@ -11,7 +11,7 @@ This projects helps to automate the BIG-IP configuration by automatically updati
 
 - You have VPC Peering already done between the HashiCorp Virtual Network and your AWS VPC where the F5 bigip and backend applications are running. 
 
-It uses Consul terraform Sync ( CTS enterprise 0.60 version), Consul HCP and Terraform Cloud. CTS  is used for Service Discovery and works with Consul HCP and Terraform Cloud. 
+It uses Consul terraform Sync ( CTS enterprise 0.6.0+ent version), Consul HCP and Terraform Cloud. CTS  is used for Service Discovery and works with Consul HCP and Terraform Cloud. 
 
 ## How to use this repo
 
@@ -128,7 +128,7 @@ EOF
 ```
 
 
-Make sure you also update the tfvars file for your applications accordingly. The task block above sources the module to deploy the FAST template and looks for the applications in the services section in the task block. For example in the above hcl file it will look for ```appA``` and ```appB```
+Make sure you also update the tfvars file for your applications accordingly. The task block above sources the module to deploy the FAST template and looks for the applications in the services section in the task block. For example in the above hcl file it will look for ```appA``` and ```appB``` 
 
 ```
 cat << EOF > tenantA_AppA.tfvars
@@ -164,12 +164,44 @@ EOF
  It uses the module registry https://registry.terraform.io/modules/scshitole/consul-sync-multi-tenant/bigip/latest and sources the module in the hcl file.
 
 
-To  Run the Consul Terraform Sync binary use the command
+To  Run the Consul Terraform Sync binary use the command as shown below, make sure you are login as root or do sudo su before running the command.
 
 ```
 consul-terraform-sync -config-file=f5nia.hcl
 
 ```
 
+If you want to deploy more applications you just need to create a new task in the ```f5nia.hcl``` file and create appropriate ```tfvars``` file.
 
+Example WAF poicy used is as shown below.
 
+```
+{
+    "policy": {
+        "name": "policy-api-arcadia",
+        "description": "Arcadia API",
+        "template": {
+            "name": "POLICY_TEMPLATE_API_SECURITY"
+        },
+        "enforcementMode": "blocking",
+        "server-technologies": [
+            {
+                "serverTechnologyName": "MySQL"
+            },
+            {
+                "serverTechnologyName": "Unix/Linux"
+            },
+            {
+                "serverTechnologyName": "MongoDB"
+            }
+        ],
+        "signature-settings": {
+            "signatureStaging": false
+        },
+        "policy-builder": {
+            "learnOnlyFromNonBotTraffic": false
+        }
+    }
+}
+
+```
