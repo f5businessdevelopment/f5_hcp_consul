@@ -123,7 +123,8 @@ terraform_provider "bigip" {
   variable_files = ["tenantB_AppB.tfvars"]
 }
 
-EOF ```
+EOF 
+```
 
 
 Make sure you also update the tfvars file for your applications accordingly. The task block above sources the module to deploy the FAST template and looks for the applications in the services section in the task block. For example in the above hcl file it will looks for ```appA``` and ```appB```
