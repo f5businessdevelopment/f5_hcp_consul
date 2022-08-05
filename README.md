@@ -127,7 +127,7 @@ EOF
 ```
 
 
-Make sure you also update the tfvars file for your applications accordingly. The task block above sources the module to deploy the FAST template and looks for the applications in the services section in the task block. For example in the above hcl file it will looks for ```appA``` and ```appB```
+Make sure you also update the tfvars file for your applications accordingly. The task block above sources the module to deploy the FAST template and looks for the applications in the services section in the task block. For example in the above hcl file it will look for ```appA``` and ```appB```
 
 ```
 cat << EOF > tenantA_AppA.tfvars
@@ -163,7 +163,12 @@ EOF
  It uses the module registry https://registry.terraform.io/modules/scshitole/consul-sync-multi-tenant/bigip/latest and sources the module in the hcl file.
 
 
+To  Run the Consul Terraform Sync binary use the command
 
+```
+consul-terraform-sync -config-file=f5nia.hcl
+
+```
 
 
 
